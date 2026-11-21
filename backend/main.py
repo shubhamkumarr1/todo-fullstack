@@ -7,9 +7,13 @@ from models import TodoCreate, TodoUpdate
 
 app = FastAPI()
 
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://todo-fullstack-sage-gamma.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -129,5 +133,6 @@ def delete_todo(todo_id: int):
     connection.commit()
     connection.close()
 
-    return {        "message": "Todo deleted successfully!"
+    return {
+        "message": "Todo deleted successfully!"
     }
