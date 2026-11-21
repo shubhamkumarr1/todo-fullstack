@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState('')
 
   const API_URL =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+    import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
   useEffect(() => {
     fetchTodos()
@@ -103,6 +103,14 @@ function App() {
   }
 
   const deleteTodo = async (id) => {
+    const isConfirmed = window.confirm(
+      'Are you sure you want to delete this task?'
+    )
+
+    if (!isConfirmed) {
+      return
+    }
+
     try {
       const response = await fetch(`${API_URL}/todos/${id}`, {
         method: 'DELETE',
@@ -252,9 +260,9 @@ function App() {
 
                     <label
                       className={`form-check-label ${todo.completed
-                          ? 'text-decoration-line-through text-muted'
-                          : ''
-                        }`}
+                        ? 'text-decoration-line-through text-muted'
+                        : ''
+                      }`}
                     >
                       {todo.title}
                     </label>
@@ -263,9 +271,9 @@ function App() {
                   <div className="d-flex align-items-center gap-2">
                     <span
                       className={`badge ${todo.completed
-                          ? 'bg-success'
-                          : 'bg-warning text-dark'
-                        }`}
+                        ? 'bg-success'
+                        : 'bg-warning text-dark'
+                      }`}
                     >
                       {todo.completed ? 'Completed' : 'Pending'}
                     </span>
