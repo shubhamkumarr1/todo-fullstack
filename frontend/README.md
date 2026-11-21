@@ -1,16 +1,101 @@
-# React + Vite
+cat > README.md <<'EOF'
+# Full Stack Todo List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive Todo List application built using React, Bootstrap, Python, FastAPI, and SQLite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new tasks
+- View all tasks
+- Edit task titles
+- Mark tasks as completed or pending
+- Delete tasks
+- Store tasks in an SQLite database
+- Validate task titles
+- Responsive user interface
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- React
+- JavaScript
+- Bootstrap
+- CSS
+- Vite
 
-## Expanding the ESLint configuration
+### Backend
+- Python
+- FastAPI
+- Pydantic
+- SQLite
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+todo-fullstack/
+├── backend/
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   └── index.html
+├── .gitignore
+└── README.md
+
+## Run Locally
+
+### 1. Clone the repository
+
+git clone https://github.com/shubhamkumarr1/todo-fullstack.git
+
+cd todo-fullstack
+
+### 2. Start the Backend
+
+cd backend
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+
+Backend: http://127.0.0.1:8000
+
+API Documentation: http://127.0.0.1:8000/docs
+
+### 3. Start the Frontend
+
+Open a new terminal:
+
+cd todo-fullstack/frontend
+
+npm install
+
+npm run dev
+
+Frontend: http://localhost:5173
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /todos | Get all tasks |
+| POST | /todos | Create a task |
+| PUT | /todos/{todo_id} | Update a task |
+| DELETE | /todos/{todo_id} | Delete a task |
+
+## Database
+
+SQLite is used to store tasks persistently.
+
+## Author
+
+Shubham Kumar
+
+GitHub: https://github.com/shubhamkumarr1
+EOF
